@@ -30,13 +30,21 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   // reset the website body with the new html output
-  document.querySelector("#widget_content").innerHTML = `<div class="widget">
+  document.querySelector("#widget_content").innerHTML = `
+  
+  <div class= "alert"></div>
+  
+  <div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
+          <h1>${variables.name} ${variables.lastname}</h1>
+          <h2>${variables.role}</h2>
+          <h3>${variables.states},${variables.countrys}</h3>
+          <ul class=${
+            variables.socialMediaPosition == "0"
+              ? "position-right"
+              : "position-left"
+          }>
             <li><a href="https://twitter.com/alesanchezr"><i class="fa fa-twitter"></i></a></li>
             <li><a href="https://github.com/alesanchezr"><i class="fa fa-github"></i></a></li>
             <li><a href="https://linkedin.com/alesanchezr"><i class="fa fa-linkedin"></i></a></li>
@@ -58,7 +66,7 @@ window.onload = function() {
     // this is the url for the profile avatar
     avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
     // social media bar position (left or right)
-    socialMediaPosition: "left",
+    socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
     github: "alesanchezr",
